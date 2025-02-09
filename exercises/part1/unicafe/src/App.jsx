@@ -17,19 +17,41 @@ const Statistic = ({ good, neutral, bad }) => {
   return (
     <>
       <h2>statistics</h2>
-      <StatisticLine text='good' value={good} />
-      <StatisticLine text='neutral' value={neutral} />
-      <StatisticLine text='bad' value={bad} />
-      <p>all {good + neutral + bad}</p>
-      <p>average {(good - bad) / (good + neutral + bad)}</p>
-      <p>positive {good / (good + neutral + bad) * 100} %</p>
+      <table style={{ border: '1px solid black' }}>
+        <tbody>
+          <tr>
+            <StatisticLineTable text='good' value={good} />
+          </tr>
+          <tr>
+            <StatisticLineTable text='neutral' value={neutral} />
+          </tr>
+          <tr>
+            <StatisticLineTable text='bad' value={bad} />
+          </tr>
+          <tr>
+            <td style={{ padding: '4px 16px' }}>all</td>
+            <td style={{ padding: '4px 16px' }}>{good + neutral + bad}</td>
+          </tr>
+          <tr>
+            <td style={{ padding: '4px 16px' }}>average</td>
+            <td style={{ padding: '4px 16px' }}>{(good - bad) / (good + neutral + bad)}</td>
+          </tr>
+          <tr>
+            <td style={{ padding: '4px 16px' }}>positive</td>
+            <td style={{ padding: '4px 16px' }}>{good / (good + neutral + bad) * 100} %</td>
+          </tr>
+        </tbody>
+      </table>
     </>
   )
 }}
 
-const StatisticLine = ({ text, value }) => {
+const StatisticLineTable = ({ text, value }) => {
   return (
-    <p>{text} {value}</p>
+    <>
+      <td style={{ padding: '4px 16px' }}>{text}</td>
+      <td style={{ padding: '4px 16px' }}>{value}</td>
+    </>
   )
 }
 
